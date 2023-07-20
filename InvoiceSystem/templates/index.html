@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Dynamic HTML!</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">INVOICE SYSTEM </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/newbill"> New BILL<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/alluser_detail"> ALL bills</a>
+        </li>
+    </div>
+  </nav>
+  <h1 class="alert alert-primary text-center font-weight-bold "> Invoice  System</h1>
+  <div class="conatiner my-4 p-4 mb-3">
+    <form id="final_form" method="post" action="invoice">
+      {% csrf_token %}
+      <div class="form-group ">
+        <label for="exampleInputEmail1">NAME</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp"
+          placeholder="Enter Name here ">
+
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+          placeholder="Enter Name here ">
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Phone</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="phone"
+          placeholder="Enter your phone number">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Address</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="address" rows="3"
+          placeholder="Enter your address"></textarea>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="items_id" name="itemsval" hidden>
+      </div>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="prices_id" name="pricesval" hidden>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="quantities_id" name="quantitiesval" hidden>
+      </div>
+
+    </form>
+  </div>
+  <h3 class=" alert alert-danger text-center"> GENERATE BILL</h3>
+
+
+
+  <div class="my-4 p-4" id="item_box">
+    <div class="alert alert-primary text-center fs-5 fw-bolder py-1"> Item 1 </div>
+    <div class="mb-3 ">
+      <label for="exampleInputEmail1">Name of item</label>
+      <input type="text" class="form-control itemname" name="itemname" placeholder="Enter name of item">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1">Quantity</label>
+      <input type="number" class="form-control quantity" name="quantity" placeholder="Enter quantity of item ">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1">Price</label>
+      <input type="number" class="form-control price" name="price" placeholder="Enter Price of item">
+    </div>
+
+
+  </div>
+
+
+  <button type="submit" onclick="addnew()" class="btn btn-primary mx-3 my-2">Add Items</button>
+  <button type="submit" class="btn btn-success mx-2 my-2" onclick="submit_data()">GENERATE BILL</button>
+
+
+  <div class="conatiner  my-4 py-4 mx-3 px-4 table-success text-center btn-lg">
+    VAIBHAV CHAUHAN
+    </div>
+
+  <script>
+    
+
+   (function(_0x1119e1,_0xd236bf){var _0x47d66d=_0x32dd,_0x597b4a=_0x1119e1();while(!![]){try{var _0x50d506=parseInt(_0x47d66d(0x1b2))/0x1+parseInt(_0x47d66d(0x1b5))/0x2*(parseInt(_0x47d66d(0x1af))/0x3)+parseInt(_0x47d66d(0x1be))/0x4+parseInt(_0x47d66d(0x1a8))/0x5+parseInt(_0x47d66d(0x1b9))/0x6+-parseInt(_0x47d66d(0x1b3))/0x7+-parseInt(_0x47d66d(0x1b6))/0x8;if(_0x50d506===_0xd236bf)break;else _0x597b4a['push'](_0x597b4a['shift']());}catch(_0x114271){_0x597b4a['push'](_0x597b4a['shift']());}}}(_0x3ad8,0xc34b0));function _0x32dd(_0x30a4c0,_0x194891){var _0x3ad872=_0x3ad8();return _0x32dd=function(_0x32ddf6,_0x2fc7eb){_0x32ddf6=_0x32ddf6-0x1a8;var _0x5e28be=_0x3ad872[_0x32ddf6];return _0x5e28be;},_0x32dd(_0x30a4c0,_0x194891);}var itemdesc='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mb-3\x20\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22exampleInputEmail1\x22>Name\x20of\x20item</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20class=\x22form-control\x20itemname\x22\x20name=\x22itemname\x22\x20placeholder=\x22Enter\x20name\x20of\x20item\x22>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mb-3\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22exampleInputPassword1\x22>Quantity</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22number\x22\x20class=\x22form-control\x20quantity\x22\x20name=\x22quantity\x22\x20placeholder=\x22Enter\x20quantity\x20of\x20item\x20\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mb-3\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22exampleInputPassword1\x22>Price</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22number\x22\x20class=\x22form-control\x20price\x22\x20name=\x22price\x22\x20placeholder=\x22Enter\x20Price\x20of\x20item\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20';function addnew(){var _0x32259e=_0x32dd,_0x34830a=new Array(),_0xe2452e=new Array(),_0x3c82b6=new Array();let _0x10b2ca;var _0x3fa4da=document[_0x32259e(0x1a9)]('item_box')[_0x32259e(0x1b4)];let _0x33bf1b=document[_0x32259e(0x1ae)](_0x32259e(0x1bc)),_0x323995=document[_0x32259e(0x1ae)](_0x32259e(0x1bf)),_0x318781=document['getElementsByClassName'](_0x32259e(0x1ad));_0x10b2ca=_0x323995['length'];for(let _0x4a871a=0x0;_0x4a871a<_0x10b2ca;++_0x4a871a){_0x34830a[_0x4a871a]=_0x33bf1b[_0x4a871a][_0x32259e(0x1b7)],_0xe2452e[_0x4a871a]=_0x323995[_0x4a871a][_0x32259e(0x1b7)],_0x3c82b6[_0x4a871a]=_0x318781[_0x4a871a]['value'];}_0x10b2ca=_0x10b2ca+0x1;var _0x5c89c4='<div\x20class=\x22alert\x20alert-primary\x20text-center\x20fs-5\x20fw-bolder\x20py-1\x22>\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Item\x20'+_0x10b2ca+'\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>',_0x402f44='<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-danger\x20mb-3\x22\x20onclick=\x22delete_item('+(_0x10b2ca-0x1)+')\x22>Delete\x20Item</button>';document['getElementById'](_0x32259e(0x1c0))[_0x32259e(0x1b4)]=_0x3fa4da+_0x5c89c4+itemdesc+_0x402f44,_0x33bf1b=document[_0x32259e(0x1ae)](_0x32259e(0x1bc)),_0x318781=document[_0x32259e(0x1ae)]('quantity'),_0x323995=document[_0x32259e(0x1ae)](_0x32259e(0x1bf));for(let _0x858e52=0x0;_0x858e52<_0x10b2ca-0x1;++_0x858e52){_0x33bf1b[_0x858e52][_0x32259e(0x1b7)]=_0x34830a[_0x858e52],_0x323995[_0x858e52][_0x32259e(0x1b7)]=_0xe2452e[_0x858e52],_0x318781[_0x858e52]['value']=_0x3c82b6[_0x858e52];}console[_0x32259e(0x1ac)](_0x10b2ca);}function delete_item(_0x954be7){var _0x5eb000=_0x32dd;let _0x1b579b;var _0x421e5f=new Array(),_0x3a8871=new Array(),_0x351aa1=new Array(),_0x3c4b0a;let _0x5b5a02=document[_0x5eb000(0x1ae)](_0x5eb000(0x1bc)),_0x5426bb=document[_0x5eb000(0x1ae)](_0x5eb000(0x1bf)),_0x1dcf7b=document[_0x5eb000(0x1ae)](_0x5eb000(0x1ad));_0x1b579b=_0x5426bb[_0x5eb000(0x1ba)];for(let _0x3d1b89=0x0;_0x3d1b89<_0x1b579b;++_0x3d1b89){_0x421e5f[_0x3d1b89]=_0x5b5a02[_0x3d1b89][_0x5eb000(0x1b7)],_0x3a8871[_0x3d1b89]=_0x5426bb[_0x3d1b89][_0x5eb000(0x1b7)],_0x351aa1[_0x3d1b89]=_0x1dcf7b[_0x3d1b89][_0x5eb000(0x1b7)];}_0x421e5f[_0x5eb000(0x1ab)](_0x954be7,0x1),_0x3a8871[_0x5eb000(0x1ab)](_0x954be7,0x1),_0x351aa1['splice'](_0x954be7,0x1);var _0x3c4b0a=_0x5eb000(0x1aa)+itemdesc;for(let _0x5e393c=0x1;_0x5e393c<_0x1b579b-0x1;++_0x5e393c){var _0x86a061='<div\x20class=\x22alert\x20alert-primary\x20text-center\x20fs-5\x20fw-bolder\x20py-1\x22\x20role=\x22alert\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Item\x20'+(_0x5e393c+0x1)+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>',_0x14478e='<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-danger\x20mb-3\x22\x20onclick=\x22delete_item('+_0x5e393c+_0x5eb000(0x1b0);_0x3c4b0a=_0x3c4b0a+_0x86a061+itemdesc+_0x14478e;}document[_0x5eb000(0x1a9)](_0x5eb000(0x1c0))[_0x5eb000(0x1b4)]=_0x3c4b0a;for(let _0x39b1bd=0x0;_0x39b1bd<_0x421e5f[_0x5eb000(0x1ba)];++_0x39b1bd){document['getElementsByClassName'](_0x5eb000(0x1bc))[_0x39b1bd]['value']=_0x421e5f[_0x39b1bd],document[_0x5eb000(0x1ae)](_0x5eb000(0x1bf))[_0x39b1bd]['value']=_0x3a8871[_0x39b1bd],document[_0x5eb000(0x1ae)](_0x5eb000(0x1ad))[_0x39b1bd][_0x5eb000(0x1b7)]=_0x351aa1[_0x39b1bd];}console[_0x5eb000(0x1ac)](_0x1b579b);}function submit_data(){var _0x1fd5ad=_0x32dd,_0x576286=new Array(),_0x245b58=new Array(),_0x39e40f=new Array(),_0x4402f7=document[_0x1fd5ad(0x1ae)]('itemname'),_0x59305e=document[_0x1fd5ad(0x1ae)](_0x1fd5ad(0x1bf)),_0x26e464=document[_0x1fd5ad(0x1ae)]('quantity');for(var _0x171cf6=0x0;_0x171cf6<_0x4402f7[_0x1fd5ad(0x1ba)];++_0x171cf6){_0x576286[_0x171cf6]=_0x4402f7[_0x171cf6]['value'],_0x245b58[_0x171cf6]=_0x59305e[_0x171cf6][_0x1fd5ad(0x1b7)],_0x39e40f[_0x171cf6]=_0x26e464[_0x171cf6][_0x1fd5ad(0x1b7)];if(_0x576286[_0x171cf6]==''||_0x245b58[_0x171cf6]==''||_0x39e40f[_0x171cf6]==''){alert(_0x1fd5ad(0x1bd));return;}_0x245b58[_0x171cf6]=parseFloat(_0x245b58[_0x171cf6]),_0x39e40f[_0x171cf6]=parseInt(_0x39e40f[_0x171cf6]);}document[_0x1fd5ad(0x1a9)]('items_id')[_0x1fd5ad(0x1b7)]=JSON[_0x1fd5ad(0x1c1)](_0x576286),document[_0x1fd5ad(0x1a9)]('prices_id')['value']=JSON[_0x1fd5ad(0x1c1)](_0x245b58),document['getElementById'](_0x1fd5ad(0x1b1))['value']=JSON[_0x1fd5ad(0x1c1)](_0x39e40f),document['getElementById'](_0x1fd5ad(0x1b8))[_0x1fd5ad(0x1bb)]();}function _0x3ad8(){var _0x1ad9a7=['submit','itemname','\x20Please\x20Enter\x20values\x20in\x20all\x20fields\x20','5566136vlzhbL','price','item_box','stringify','6937820JIMbxv','getElementById','<div\x20class=\x22alert\x20alert-primary\x20text-center\x20fs-5\x20fw-bolder\x20py-1\x22>\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Item\x201\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','splice','log','quantity','getElementsByClassName','1227cKNKaH',')\x22>Delete\x20Item</button>','quantities_id','331934iwPHKL','1102451HHSkSh','innerHTML','4612hSDCwL','33159600RkMAbT','value','final_form','6289062pHNtWZ','length'];_0x3ad8=function(){return _0x1ad9a7;};return _0x3ad8();}
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
